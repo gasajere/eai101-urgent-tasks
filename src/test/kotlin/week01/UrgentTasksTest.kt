@@ -8,6 +8,7 @@ import org.junit.Test
 class UrgentTasksTest {
 
     private val thursday = LocalDate.of(2026, 10, 22)
+    private val wednesday = LocalDate.of(2026, 10, 21)
 
     private val sendReport = Task(1, "Send report", null, dueDate = LocalDate.of(2026, 10, 21))
     private val bookRoom = Task(2, "Book meeting room", null, dueDate = LocalDate.of(2026, 10, 22))
@@ -35,5 +36,9 @@ class UrgentTasksTest {
     fun taskDueInTwoDaysIsNotUrgent() {
         val tuesday = LocalDate.of(2026, 10, 20)
         assertFalse(bookRoom.isUrgent(tuesday))
+    }
+    @Test
+    fun taskDueTomorrowIsUrgent(){
+        assertTrue(bookRoom.isUrgent(wednesday))
     }
 }
