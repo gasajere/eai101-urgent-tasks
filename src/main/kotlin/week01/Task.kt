@@ -27,7 +27,7 @@ fun Task.isUrgent(today: LocalDate): Boolean {
     if (isCompleted) return false
     val due = dueDate ?: return false
     val daysLeft = ChronoUnit.DAYS.between(today, due).toInt()
-    val label = priorityLabel(daysLeft)
-    return label == "Overdue" || label == "Today"
-//    return daysLeft <= 1
+//    val label = priorityLabel(daysLeft)
+//    return label == "Overdue" || label == "Today"
+    return daysLeft <= 1
 }
