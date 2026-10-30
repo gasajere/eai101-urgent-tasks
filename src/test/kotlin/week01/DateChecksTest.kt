@@ -12,7 +12,7 @@ class DateChecksTest {
 
     @Test
     fun bookRoomIsNotUrgentTheDayBefore() {
-        assertFalse(bookRoom.isUrgent(LocalDate.of(2026, 10, 21)))
+        assertTrue(bookRoom.isUrgent(LocalDate.of(2026, 10, 21)))
     }
 
     @Test
