@@ -29,3 +29,5 @@ fun Task.isUrgent(today: LocalDate): Boolean {
     val daysLeft = ChronoUnit.DAYS.between(today, due).toInt()
     return daysLeft <= 1
 }
+// Stub for the test only. Intern 2 replaces it.
+fun List<Task>.urgentFirst(today: LocalDate): List<Task> = this
