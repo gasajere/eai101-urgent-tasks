@@ -22,6 +22,9 @@ class UrgentFirstTest {
 
     @Test
     fun urgentTasksComeFirstOnThursday() {
-        assertEquals(listOf<Long>( ___ ), cards.urgentFirst(thursday).map { it.id })
+        assertEquals(
+            listOf<Long>(1, 2, 4, 5, 6, 7, 3, 8),
+            cards.urgentFirst(thursday).map { it.id }
+        )
     }
 }

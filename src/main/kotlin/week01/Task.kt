@@ -25,9 +25,14 @@ fun List<Task>.pendingFirst(): List<Task> = sortedBy { it.isCompleted }
 /** Urgent = not done, and overdue or due today (client rules, W2D2). */
 fun Task.isUrgent(today: LocalDate): Boolean {
     if (isCompleted) return false
+
     val due = dueDate ?: return false
-    val daysLeft = ChronoUnit.DAYS.between(today, due).toInt()
-    return daysLeft <= 1
+
+    return !due.isAfter(today)
 }
 // Stub for the test only. Intern 2 replaces it.
-fun List<Task>.urgentFirst(today: LocalDate): List<Task> = this
+fun List<Task>.urgentFirst(today: LocalDate): List<Task> =
+    sortedWith(
+        compareBy<Task> { !it.isUrgent(today) }
+            .thenBy { it.isCompleted }
+    )

@@ -39,6 +39,6 @@ class UrgentTasksTest {
     }
     @Test
     fun taskDueTomorrowIsUrgent(){
-        assertTrue(bookRoom.isUrgent(wednesday))
+        assertFalse(bookRoom.isUrgent(wednesday))
     }
 }
