@@ -11,8 +11,8 @@ class DateChecksTest {
     private val bookRoom = Task(2, "Book meeting room", null, dueDate = LocalDate.of(2026, 10, 22))
 
     @Test
-    fun bookRoomIsUrgentTheDayBefore() {
-        assertFalse(bookRoom.isUrgent(LocalDate.of(2026, 10, 21)))
+    fun  bookRoomIsUrgentTheDayBefore() {
+        assertTrue(bookRoom.isUrgent(LocalDate.of(2026, 10, 21)))
     }
 
     @Test

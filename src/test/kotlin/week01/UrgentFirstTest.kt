@@ -17,13 +17,19 @@ class UrgentFirstTest {
         Task(5, "Plan team lunch", null, dueDate = LocalDate.of(2026, 10, 26)),
         Task(6, "Call the airline", null),
         Task(7, "Order printer paper", null, dueDate = LocalDate.of(2026, 10, 23)),
-        Task(8, "Update contact list", null, isCompleted = true, dueDate = LocalDate.of(2026, 10, 23)),
+        Task(
+            8,
+            "Update contact list",
+            null,
+            isCompleted = true,
+            dueDate = LocalDate.of(2026, 10, 23)
+        ),
     )
 
     @Test
     fun urgentTasksComeFirstOnThursday() {
         assertEquals(
-            listOf<Long>(1, 2, 4, 5, 6, 7, 3, 8),
+            listOf<Long>(4, 1, 2, 7, 5, 6, 3, 8),
             cards.urgentFirst(thursday).map { it.id }
         )
     }
