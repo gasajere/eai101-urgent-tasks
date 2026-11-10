@@ -33,4 +33,36 @@ class UrgentFirstTest {
             cards.urgentFirst(thursday).map { it.id }
         )
     }
+
+    @Test
+    fun completedTaskWithoutDueDateComesLast() {
+        val completedTasks = listOf(
+            Task(
+                9,
+                "Task without due date",
+                null,
+                isCompleted = true
+            ),
+            Task(
+                10,
+                "Task with earlier due date",
+                null,
+                isCompleted = true,
+                dueDate = LocalDate.of(2026, 10, 20)
+            ),
+            Task(
+                11,
+                "Task with later due date",
+                null,
+                isCompleted = true,
+                dueDate = LocalDate.of(2026, 10, 23)
+            )
+        )
+
+        assertEquals(
+            listOf<Long>(10, 11, 9),
+            completedTasks.urgentFirst(thursday).map { it.id }
+        )
+    }
+
 }

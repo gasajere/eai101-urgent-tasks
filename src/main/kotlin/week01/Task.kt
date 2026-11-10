@@ -22,14 +22,14 @@ fun List<Task>.toggle(id: Long): List<Task> =
 
 fun List<Task>.pendingFirst(): List<Task> = sortedBy { it.isCompleted }
 
-/** Urgent = not done, and overdue or due today (client rules, W2D2). */
+/** Urgent = not done, and overdue, due today, or due tomorrow (client rules). */
 fun Task.isUrgent(today: LocalDate): Boolean {
     if (isCompleted) return false
     val due = dueDate ?: return false
     val daysLeft = ChronoUnit.DAYS.between(today, due).toInt()
     return daysLeft <= 1
 }
-// Stub for the test only. Intern 2 replaces it.
+
 fun List<Task>.urgentFirst(today: LocalDate): List<Task> =
     sortedWith(
         compareBy<Task> {
@@ -41,5 +41,7 @@ fun List<Task>.urgentFirst(today: LocalDate): List<Task> =
                 it.dueDate.isEqual(today.plusDays(1)) -> 2
                 else -> 3
             }
-        }.thenBy { it.dueDate }
+        }
+            .thenBy { it.dueDate == null }
+            .thenBy { it.dueDate }
     )
