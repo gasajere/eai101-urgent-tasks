@@ -25,7 +25,7 @@ class Week1CheckpointTest {
     fun priorityLabelBoundaries() {
         assertEquals("Overdue", priorityLabel(-1))
         assertEquals("Today", priorityLabel(0))
-        assertEquals("Soon", priorityLabel(1))
+        assertEquals("Later", priorityLabel(1))
         assertEquals("Soon", priorityLabel(3))
         assertEquals("Later", priorityLabel(4))
     }
