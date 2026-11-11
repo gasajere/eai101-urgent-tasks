@@ -11,7 +11,8 @@ fun describeTask(title: String, isCompleted: Boolean = false): String {
 fun priorityLabel(daysLeft: Int): String = when {
     daysLeft < 0 -> "Overdue"
     daysLeft == 0 -> "Today"
-    daysLeft in 1..3 -> "Soon"
+    daysLeft == 1 -> "Tomorrow"
+    daysLeft in 2..3 -> "Soon"
     else -> "Later"
 }
 
