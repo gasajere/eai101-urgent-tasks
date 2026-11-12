@@ -13,6 +13,8 @@ data class Task(
     val dueDate: LocalDate? = null
 )
 
+fun Task.label(today: LocalDate): String = ""
+
 fun Task.descriptionOrFallback(): String =
     description?.takeIf { it.isNotBlank() } ?: "No description"
 
