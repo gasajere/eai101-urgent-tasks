@@ -13,6 +13,15 @@ data class Task(
     val dueDate: LocalDate? = null
 )
 
+fun Task.label(today: LocalDate): String {
+    if (isCompleted) return "Done"
+
+    val due = dueDate ?: return "No date"
+    val daysLeft = ChronoUnit.DAYS.between(today, due).toInt()
+
+    return priorityLabel(daysLeft)
+}
+
 fun Task.descriptionOrFallback(): String =
     description?.takeIf { it.isNotBlank() } ?: "No description"
 
