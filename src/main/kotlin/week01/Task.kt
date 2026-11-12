@@ -34,12 +34,10 @@ fun List<Task>.urgentFirst(today: LocalDate): List<Task> =
     sortedWith(
         compareBy<Task> {
             when {
-                it.isCompleted -> 5
-                it.dueDate == null -> 4
-                it.dueDate.isBefore(today) -> 0
-                it.dueDate.isEqual(today) -> 1
-                it.dueDate.isEqual(today.plusDays(1)) -> 2
-                else -> 3
+                it.isCompleted -> 3
+                it.dueDate == null -> 2
+                it.isUrgent(today) -> 0
+                else -> 1
             }
         }
             .thenBy { it.dueDate == null }

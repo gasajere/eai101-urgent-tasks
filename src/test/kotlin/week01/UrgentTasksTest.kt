@@ -41,4 +41,28 @@ class UrgentTasksTest {
     fun taskDueTomorrowIsUrgent(){
         assertTrue(bookRoom.isUrgent(wednesday))
     }
+    @Test
+    fun boundaryMonthTaskDueTomorrowIsUrgent(){
+        val today = LocalDate.of(2026, 10, 31)
+        val task = Task(1, "Do something", null, false, LocalDate.of(2026, 11, 1))
+        assertTrue(task.isUrgent(today))
+    }
+    @Test
+    fun boundaryYearTaskDueTomorrowIsUrgent(){
+        val today = LocalDate.of(2026, 12, 31)
+        val task = Task(1, "Do something", null, false, LocalDate.of(2027, 1, 1))
+        assertTrue(task.isUrgent(today))
+    }
+    @Test
+    fun boundaryMonthTaskDueIn2DaysIsNotUrgent(){
+        val today = LocalDate.of(2026, 10, 30)
+        val task = Task(1, "Do something", null, false, LocalDate.of(2026, 11, 1))
+        assertFalse(task.isUrgent(today))
+    }
+    @Test
+    fun doneTaskDueTodayIsNotUrgent(){
+        val today = LocalDate.of(2026, 10, 22)
+        val task = Task(1, "Do something", null, true, LocalDate.of(2026, 10, 22))
+        assertFalse(task.isUrgent(today))
+    }
 }
