@@ -1,4 +1,4 @@
-﻿package week01
+package week01
 
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
