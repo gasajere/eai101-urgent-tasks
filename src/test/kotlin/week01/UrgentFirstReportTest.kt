@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 class UrgentFirstReportTest {
     private val payRent = Task(1, "Pay rent", null, dueDate = LocalDate.of(2026, 11, 3))
-    private val callBank = Task(2, "Call back", null, dueDate = LocalDate.of(2026, 11, 1))
+    private val callBank = Task(2, "Call bank", null, dueDate = LocalDate.of(2026, 11, 1))
     private val cards = listOf<Task>(payRent, callBank)
     @Test
     fun taskDueTomorrowComesFirst(){
