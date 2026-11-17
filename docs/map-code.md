@@ -36,7 +36,7 @@ flowchart TD
 | Arrow | File:line | Evidence |
 |---|---|---|
 | `Task.label()` → `priorityLabel()` | `Task.kt:22` | `Task.label()` calls `priorityLabel(daysLeft)` |
-| `urgentFirst()` → `isUrgent()` | `Task.kt:50` | `urgentFirst()` calls `it.isUrgent(today)` |
+| `urgentFirst()` → `isUrgent()` | `Task.kt:48` | `urgentFirst()` calls `it.isUrgent(today)` |
 | `DateChecksTest.kt` → `isUrgent()` | `DateChecksTest.kt:15, 20` | Tests invoke `isUrgent()` |
 | `TaskLabelTest.kt` → `label()` | `TaskLabelTest.kt:14, 20, 26, 32, 38, 44, 50, 56` | Tests invoke `label()` |
 | `UrgentFirstReportTest.kt` → `urgentFirst()` | `UrgentFirstReportTest.kt:16` | Test invokes `urgentFirst()` |
