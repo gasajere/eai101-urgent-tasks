@@ -10,7 +10,7 @@ rules for any AI that works in this repo
 
 ## Lessons, week of 9 Nov
 
-1. Put "Closes #N" in the PR body, not only in the title, so the issue is linked and closed on merge. — [PR #20](https://github.com/gasajere/eai101-urgent-tasks/pull/20)
+1. Put "Closes #N" in the PR body, not only in the title, so the issue is linked and closed on merge. — [PR #22](https://github.com/gasajere/eai101-urgent-tasks/pull/22)
 2. Show each new test failing once, and make sure the failure line names that test. — [PR #21](https://github.com/gasajere/eai101-urgent-tasks/pull/21)
 3. Never change a test's expected value to make it pass; ask which rule is current, and let README.md decide. — [PR #33](https://github.com/gasajere/eai101-urgent-tasks/pull/33)
 4. Write a commit message that says what the commit does, not a result ("test failed") or a flag ("--no-edit"). — [commit 393c145](https://github.com/gasajere/eai101-urgent-tasks/commit/393c145)
