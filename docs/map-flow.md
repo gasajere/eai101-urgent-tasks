@@ -47,25 +47,18 @@ flowchart TD
 
 | Step or failure path | Source |
 | --- | --- |
-| Issue / ticket | seen in the GitHub UI. |
+| Issue / ticket | GitHub Issues UI. |
 | Branch from newest `main` | `AGENTS.md`, lesson 6: run `git fetch origin`, then branch from `origin/main`. |
-| Commits on the branch | `AGENTS.md`, lesson 4: the commit message says what the commit does. |
-| Push commits | `AGENTS.md`, lesson 1 points to `README.md`; `README.md`, team rule 2: run all tests before pushing. |
+| Commits on the branch | `AGENTS.md`, lesson 4: the commit message says what the commit does. `README.md`, team rule 2: run all tests before pushing. |
 | PR template | `.github/pull_request_template.md`. |
-| CI before merge | `.github/workflows/ci.yml`: `pull_request` trigger on PRs to `main`; job `test` runs `./gradlew cleanTest test`. |
-| Red CI before merge | `.github/workflows/ci.yml`; fix the tests and push new commits to the same PR. |
-| Teammate review | `AGENTS.md`, lesson 1 points to `README.md`; `README.md`, team rule 3: a teammate reviews every PR. |
-| Review asks for changes | seen in the GitHub UI; the review requirement is in `README.md`, team rule 3. |
+| CI job `test` before merge | `.github/workflows/ci.yml`: the `pull_request` trigger runs `./gradlew cleanTest test` on pull requests to `main`. |
+| Red `test` | `.github/workflows/ci.yml`. Whether `test` is a required check is controlled by branch protection of `main` — not verified. |
+| Teammate review | `README.md`, team rule 3: a teammate reviews every PR before it is merged. |
+| Review asks for changes | GitHub review UI; the review requirement is in `README.md`, team rule 3. |
 | Branch out-of-date | `AGENTS.md`, lesson 6 prevents starting from stale `main`. Whether an up-to-date branch is required is branch protection of `main` — not verified. |
-| Fetch and update the branch | seen in the GitHub UI. |
-| Merge conflict | seen in the GitHub UI; no repo rule file. |
-| Resolve conflict locally | seen in the GitHub UI; no repo rule file. |
-| Merge to `main` | `AGENTS.md`, lesson 1 points to `README.md`; `README.md`, team rule 1: never change `main` directly. Branch protection of `main` — not verified. |
-| PR body has a closing keyword | `AGENTS.md`, lesson 1: put `Closes #N` in the PR body. This happens at merge, not after the post-merge CI run. |
-| Issue closes automatically | `AGENTS.md`, lesson 1. |
-| Issue stays open | `AGENTS.md`, lesson 1; the issue stays open until the closing keyword is added or someone closes it manually. |
-| Add closing keyword and close manually | `AGENTS.md`, lesson 1; seen in the GitHub UI. |
-| Merge creates a push on `main` | seen in the GitHub UI; `push` trigger is in `.github/workflows/ci.yml`. |
-| CI after merge | `.github/workflows/ci.yml`: `push` trigger on `branches: [ main ]`; job `test` runs `./gradlew cleanTest test`. |
-| Main is green | `.github/workflows/ci.yml`, job `test`. |
-| Red CI after merge | seen in the GitHub UI; revert or open a fix branch/PR. Whether this is enforced as a merge gate is branch protection of `main` — not verified. |
+| Merge conflict | Git/GitHub merge UI; there is no repo rule file for conflict resolution. |
+| Merge to `main` | Branch protection of `main` — not verified. `README.md`, team rule 1 says never change `main` directly. |
+| Issue closes | `AGENTS.md`, lesson 1: put `Closes #N` in the PR body. |
+| Missing closing keyword | `AGENTS.md`, lesson 1; the issue stays open until the PR body is corrected or the issue is closed manually. |
+| CI job `test` after merge | `.github/workflows/ci.yml`: the `push` trigger on `branches: [ main ]` runs `./gradlew cleanTest test` on the merge commit. |
+| Red `test` after merge | `.github/workflows/ci.yml` runs the check; there is no repo rule file for what to do next (revert or open a fix PR). |
