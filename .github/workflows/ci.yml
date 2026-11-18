@@ -25,4 +25,3 @@ jobs:
           cache: 'gradle'
       - name: Run Gradle tests
         run: ./gradlew cleanTest test
-
