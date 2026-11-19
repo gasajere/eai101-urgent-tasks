@@ -17,3 +17,15 @@ rules for any AI that works in this repo
 5. Make "Not checked" list the real risks of this change; if you know none, write "Nothing known". — [PR #21](https://github.com/gasajere/eai101-urgent-tasks/pull/21)
 6. Start each branch from the newest main: run `git fetch origin`, then branch from `origin/main`. — [PR #42](https://github.com/gasajere/eai101-urgent-tasks/pull/42)
 7. Stop and ask a person before a push to main, a change in `.github/workflows/`, a change to branch protection, reading a secret or token, or adding a dependency. — [PR #22](https://github.com/gasajere/eai101-urgent-tasks/pull/22)
+
+## Review checklist (from the evidence class, 16 Nov)
+
+Use it for every PR: as the author before you ask for a review, and as the reviewer before you approve.
+
+1. Read the ticket's "Done when". Is each claim done in the PR?
+2. Run `git diff`: which files changed, and where? Write down any out-of-scope change.
+3. Open each evidence link. Does the failure line name THAT test?
+4. Run the tests locally and check CI. Write both results (which pass, which fail).
+5. Does the PR description say what changed and why?
+6. Write what you opened and ran, not only "looks good".
+7. After new commits or new feedback, check again.
